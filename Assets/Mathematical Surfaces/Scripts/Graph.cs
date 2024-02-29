@@ -7,7 +7,7 @@ public class Graph : MonoBehaviour
     [SerializeField] Transform pointPrefab;
     [SerializeField] int numberPoints = 11;
     Transform[] points;
-    [SerializeField] FunctionLibrary.FunctionName functionIndex;
+    [SerializeField] FunctionName functionIndex;
 
     void Start()
     {
