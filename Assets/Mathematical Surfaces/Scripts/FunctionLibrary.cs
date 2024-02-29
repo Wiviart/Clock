@@ -1,8 +1,9 @@
+using UnityEngine;
 using static UnityEngine.Mathf;
 
 public static class FunctionLibrary
 {
-    public delegate float Function(float x, float z, float t);
+    public delegate Vector3 Function(float u, float v, float t);
     public enum FunctionName { Wave, MultiWave, Ripple }
     static Function[] functions = { Wave, MultiWave, Ripple };
 
@@ -11,24 +12,35 @@ public static class FunctionLibrary
         return functions[(int)name];
     }
 
-    static float Wave(float x, float z, float t)
+    static Vector3 Wave(float u, float v, float t)
     {
-        return Sin(PI * (x + z + t));
+        Vector3 p;
+        p.x = u;
+        p.y = Sin(PI * (u + v + t));
+        p.z = v;
+        return p;
     }
 
-    static float MultiWave(float x, float z, float t)
+    static Vector3 MultiWave(float u, float v, float t)
     {
-        float y = Sin(PI * (x + t * 0.5f));
-        y += Sin(2f * PI * (z + t)) * 0.5f;
-        y += Sin(PI * (x + z + 0.25f * t));
-        return y * (2f / 3f);
+        Vector3 p;
+        p.x = u;
+        p.y = Sin(PI * (u + 0.5f * t));
+        p.y += Sin(2f * PI * (v + t)) * 0.5f;
+        p.y += Sin(PI * (u + v + 0.25f * t));
+        p.y *= 2f / 5f;
+        p.z = v;
+        return p;
     }
 
-    static float Ripple(float x, float z, float t)
+    static Vector3 Ripple(float u, float v, float t)
     {
-        float d = Sqrt(x * x + z * z);
-        float y = Sin(PI * (4f * d - t));
-        y /= 1f + 10f * d;
-        return y;
+        float d = Sqrt(u * u + v * v);
+        Vector3 p;
+        p.x = u;
+        p.y = Sin(PI * (4f * d - t));
+        p.y /= 1f + 10f * d;
+        p.z = v;
+        return p;
     }
 }
