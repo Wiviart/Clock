@@ -7,11 +7,18 @@ public static class FunctionLibrary
     public delegate Vector3 Function(float u, float v, float t);
     static Function[] functions =
     {
-        Wave, MultiWave, Ripple, Sphere,
-        ScalingSphere, VerticalBandsSphere,
-        HorizontalBandsSphere, TwistingSphere,
-        PulledSphere,HeartCylinder,
-        TwistingUnknown,TwistingUnknown2,
+        Wave,
+        MultiWave,
+        Ripple,
+        Sphere,
+        ScalingSphere,
+        VerticalBandsSphere,
+        HorizontalBandsSphere,
+        TwistingSphere,
+        PulledSphere,
+        HeartCylinder,
+        TwistingUnknown,
+        TwistingUnknown2,
         TwistingUnknown3,
         TwistingUnknown4,
         TwistingUnknown5,
@@ -20,13 +27,24 @@ public static class FunctionLibrary
         TwistingUnknown8,
         TwistingUnknown9,
         TwistingUnknown10,
-                 SpindleTorus,
-        RingTorus, TwistingTorus
+        SpindleTorus,
+        RingTorus,
+        TwistingTorus
     };
 
     public static Function GetFunction(FunctionName name)
     {
         return functions[(int)name];
+    }
+
+    public static FunctionName GetNextFunctionName(FunctionName name)
+    {
+        return (int)name < functions.Length - 1 ? name + 1 : 0;
+    }
+
+    public static Vector3 Morph(float u, float v, float t, Function from, Function to, float progress)
+    {
+        return Vector3.LerpUnclamped(from(u, v, t), to(u, v, t), SmoothStep(0f, 1f, progress));
     }
 
     static Vector3 Wave(float u, float v, float t)
