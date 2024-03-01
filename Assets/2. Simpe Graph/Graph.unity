@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointPrefab: {fileID: 4876497378186293105, guid: 67085f1f2320d7d46a11f0e839e9c161, type: 3}
-  numberPoints: 50
+  numberPoints: 100
 --- !u!4 &420531163
 Transform:
   m_ObjectHideFlags: 0
