@@ -1,4 +1,4 @@
-Shader "Simple Graph/Prefabs/Point Surface"
+Shader "3. Mathematical Surfaces/Prefabs/Point Surface"
 {
     Properties
     {
