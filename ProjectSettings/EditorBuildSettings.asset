@@ -4,5 +4,23 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/General.unity
+    guid: 1deb082a4f296844186634671a9ee0f7
+  - enabled: 1
+    path: Assets/1. Clock/Scenes/Clock.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/2. Simpe Graph/Graph.unity
+    guid: d5481aa09213c884b8c67a0128d45fe4
+  - enabled: 1
+    path: Assets/3. Mathematical Surfaces/Mathematical Surfaces.unity
+    guid: b91c0517790917f4db71220f769c85e0
+  - enabled: 1
+    path: Assets/4. Compute Shaders/ComputeShaders.unity
+    guid: cb76c108476973c48b0262cfecab139d
+  - enabled: 1
+    path: Assets/5. Jobs/Jobs.unity
+    guid: 1d8264b2b2afe714db124157dcef595d
   m_configObjects: {}
