@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/5. Jobs/Jobs Fractal/Jobs 3.unity
     guid: 7866787efb0d91b44aa47c549c2562d4
+  - enabled: 1
+    path: Assets/6. Organic Variety/Organic Variety.unity
+    guid: b0d878c04e6858a438e3fafb5289a822
   m_configObjects: {}

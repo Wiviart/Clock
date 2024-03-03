@@ -4,11 +4,10 @@ using UnityEngine.UI;
 
 public class NextSceneButton : MonoBehaviour
 {
-    Button nextSceneButton;
+    [SerializeField] Button nextSceneButton;
     int currentSceneIndex = 1;
     void Awake()
     {
-        nextSceneButton = GetComponentInChildren<Button>();
         nextSceneButton.onClick.AddListener(NextScene);
     }
 

@@ -1,9 +1,12 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FrameRateCounter : MonoBehaviour
 {
     private TextMeshProUGUI text;
+    [SerializeField] Button button;
+
     int frames;
     float duration, bestDuration = float.MaxValue, worstDuration, averageDuration;
     enum DisplayMode { FPS, MS }
@@ -14,6 +17,7 @@ public class FrameRateCounter : MonoBehaviour
     void Awake()
     {
         text = GetComponentInChildren<TextMeshProUGUI>();
+        button.onClick.AddListener(ChangeDisplayMode);
     }
 
     void Update()
@@ -46,12 +50,18 @@ public class FrameRateCounter : MonoBehaviour
 
     string TextDisplay(float max, float aver, float min, int decimals = 0)
     {
+        string mode = display == DisplayMode.FPS ? "FPS" : "MS";
         string formatString =
-        $"FPS\n<color=green>{{0:F{decimals}}}</color>\n"
+        $"{mode}\n<color=green>{{0:F{decimals}}}</color>\n"
         + $"<color=yellow>{{1:F{decimals}}}</color>\n"
         + $"<color=red>{{2:F{decimals}}}</color>";
 
         return string.Format(formatString, max, aver, min);
 
+    }
+
+    void ChangeDisplayMode()
+    {
+        display = display == DisplayMode.FPS ? DisplayMode.MS : DisplayMode.FPS;
     }
 }
