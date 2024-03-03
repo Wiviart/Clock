@@ -50,9 +50,8 @@ public class FrameRateCounter : MonoBehaviour
 
     string TextDisplay(float max, float aver, float min, int decimals = 0)
     {
-        string mode = display == DisplayMode.FPS ? "FPS" : "MS";
         string formatString =
-        $"{mode}\n<color=green>{{0:F{decimals}}}</color>\n"
+        $"{display}\n<color=green>{{0:F{decimals}}}</color>\n"
         + $"<color=yellow>{{1:F{decimals}}}</color>\n"
         + $"<color=red>{{2:F{decimals}}}</color>";
 
@@ -62,6 +61,6 @@ public class FrameRateCounter : MonoBehaviour
 
     void ChangeDisplayMode()
     {
-        display = display == DisplayMode.FPS ? DisplayMode.MS : DisplayMode.FPS;
+        display ^= DisplayMode.MS ^ DisplayMode.FPS;
     }
 }
