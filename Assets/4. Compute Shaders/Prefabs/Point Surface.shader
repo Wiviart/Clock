@@ -1,4 +1,4 @@
-Shader "4. Compute Shaders/Prefabs/Point Surface"
+Shader "CLC_Shader/Compute Shaders/Point Surface"
 {
     Properties
     {

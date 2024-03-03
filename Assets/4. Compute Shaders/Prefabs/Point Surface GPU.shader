@@ -1,4 +1,4 @@
-Shader "Simple Graph/Prefabs/Point Surface GPU"
+Shader "CLC_Shader/Compute Shaders/Point Surface GPU"
 {
     Properties
     {

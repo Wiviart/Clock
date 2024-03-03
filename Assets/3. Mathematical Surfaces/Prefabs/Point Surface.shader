@@ -1,4 +1,4 @@
-Shader "3. Mathematical Surfaces/Prefabs/Point Surface"
+Shader "CLC_Shader/Mathematical Surfaces/Point Surface"
 {
     Properties
     {
