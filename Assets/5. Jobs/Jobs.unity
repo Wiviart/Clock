@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 1221163392}
   - component: {fileID: 1221163393}
   m_Layer: 0
-  m_Name: Upgrade Factal
+  m_Name: Upgrade Fractal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
