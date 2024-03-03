@@ -9,15 +9,15 @@ public class SliderController : MonoBehaviour
 {
     Slider slider;
     TextMeshProUGUI depth;
-    [SerializeField] Fractal fractal;
+    Fractal fractal;
 
     void Awake()
     {
-        slider = GetComponent<Slider>();
+        slider = GetComponentInChildren<Slider>();
         slider.onValueChanged.AddListener(OnSliderValueChanged);
 
         depth = GetComponentInChildren<TextMeshProUGUI>();
-        // fractal = FindObjectOfType<Fractal>();
+        fractal = FindObjectOfType<Fractal>();
     }
 
     void Start()
