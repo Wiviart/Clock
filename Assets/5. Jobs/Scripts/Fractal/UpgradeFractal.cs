@@ -67,6 +67,26 @@ public class UpgradeFractal : Fractal
         }
     }
 
+    internal override void UpdateFractal()
+    {
+        if (parts != null && this.enabled)
+        {
+            OnDisable();
+            Awake();
+        }
+    }
+
+    void OnDisable()
+    {
+        for (int i = 0; i < parts.Length; i++)
+        {
+            for (int j = 0; j < parts[i].Length; j++)
+            {
+                Destroy(parts[i][j].transform.gameObject);
+            }
+        }
+    }
+
     void Update()
     {
         Quaternion deltaRotation = Quaternion.Euler(0f, 22.5f * Time.deltaTime, 0f);

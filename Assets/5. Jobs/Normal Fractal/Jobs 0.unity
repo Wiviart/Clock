@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e20bada962c29da46a813483bb64986a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  depth: 4
+  depth: 6
 --- !u!4 &6520983
 Transform:
   m_ObjectHideFlags: 0
@@ -880,6 +880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d34affe7d250ebb49aa4600856d2be7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fractal: {fileID: 0}
 --- !u!114 &1479621296627062912
 MonoBehaviour:
   m_ObjectHideFlags: 0
