@@ -89,16 +89,16 @@ public class JobsFractal : Fractal
 
     void OnValidate()
     {
-        UpdateFractal();
-    }
-
-    internal override void UpdateFractal()
-    {
         if (parts != null && enabled)
         {
             OnDisable();
             OnEnable();
         }
+    }
+
+    internal override void UpdateFractal()
+    {
+        OnValidate();
     }
 
     void Update()

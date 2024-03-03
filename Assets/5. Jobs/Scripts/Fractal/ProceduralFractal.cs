@@ -89,6 +89,11 @@ public class ProceduralFractal : Fractal
         }
     }
 
+    internal override void UpdateFractal()
+    {
+        OnValidate();
+    }
+
     void Update()
     {
         float spinAngleDelta = 22.5f * Time.deltaTime;

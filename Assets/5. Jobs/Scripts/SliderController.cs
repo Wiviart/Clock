@@ -9,7 +9,7 @@ public class SliderController : MonoBehaviour
 {
     Slider slider;
     TextMeshProUGUI depth;
-    Fractal fractal;
+    [SerializeField] Fractal fractal;
 
     void Awake()
     {

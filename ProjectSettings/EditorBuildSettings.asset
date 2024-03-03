@@ -21,15 +21,15 @@ EditorBuildSettings:
     path: Assets/4. Compute Shaders/ComputeShaders.unity
     guid: cb76c108476973c48b0262cfecab139d
   - enabled: 1
-    path: Assets/5. Jobs/Jobs 0.unity
+    path: Assets/5. Jobs/Normal Fractal/Jobs 0.unity
     guid: 1d8264b2b2afe714db124157dcef595d
   - enabled: 1
-    path: Assets/5. Jobs/Jobs 1.unity
+    path: Assets/5. Jobs/Normal Fractal/Jobs 1.unity
     guid: f37889c58830049458bc1cac81cb5358
   - enabled: 1
-    path: Assets/5. Jobs/Jobs 2.unity
+    path: Assets/5. Jobs/Procedural Fractal/Jobs 2.unity
     guid: aad6a216cbcd131488c33a1c4fd7b40d
   - enabled: 1
-    path: Assets/5. Jobs/Jobs 3.unity
+    path: Assets/5. Jobs/Jobs Fractal/Jobs 3.unity
     guid: 7866787efb0d91b44aa47c549c2562d4
   m_configObjects: {}
