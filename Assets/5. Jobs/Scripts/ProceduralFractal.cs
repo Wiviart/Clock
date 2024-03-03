@@ -10,6 +10,7 @@ public class ProceduralFractal : Fractal
     Matrix4x4[][] matrices;
     ComputeBuffer[] matricesBuffers;
     static readonly int matricesId = Shader.PropertyToID("_Matrices");
+    static MaterialPropertyBlock propertyBlock;
 
     struct FractalPart
     {
@@ -64,6 +65,8 @@ public class ProceduralFractal : Fractal
                 }
             }
         }
+
+        propertyBlock ??= new MaterialPropertyBlock();
     }
 
     void OnDisable()
@@ -128,8 +131,10 @@ public class ProceduralFractal : Fractal
             {
                 ComputeBuffer buffer = matricesBuffers[i];
                 buffer.SetData(matrices[i]);
-                material.SetBuffer(matricesId, buffer);
-                Graphics.DrawMeshInstancedProcedural(mesh, 0, material, bounds, buffer.count);
+                propertyBlock.SetBuffer(matricesId, buffer);
+                Graphics.DrawMeshInstancedProcedural(
+                    mesh, 0, material, bounds, buffer.count, propertyBlock
+                );
             }
         }
     }
