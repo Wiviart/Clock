@@ -12,7 +12,7 @@ struct FractalPart
 {
     public float3 worldPosition;
     public Quaternion rotation, worldRotation;
-    public float maxSagAngle, spinAngle;
+    public float maxSagAngle, spinAngle, spinVelocity;
 }
 
 public class Fractal : MonoBehaviour
@@ -27,6 +27,11 @@ public class Fractal : MonoBehaviour
     [SerializeField] Color leafColorA, leafColorB;
     [SerializeField, Range(0f, 90f)]
     float maxSagAngleA = 15f, maxSagAngleB = 25f;
+    [SerializeField, Range(0f, 90f)]
+    float spinSpeedA = 20f, spinSpeedB = 25f;
+
+    [SerializeField, Range(0f, 1f)]
+    float reverseSpinChance = 0.25f;
 
     NativeArray<FractalPart>[] parts;
     NativeArray<float3x4>[] matrices;
@@ -51,7 +56,8 @@ public class Fractal : MonoBehaviour
         return new FractalPart
         {
             maxSagAngle = radians(Random.Range(maxSagAngleA, maxSagAngleB)),
-            rotation = rotations[childIndex]
+            rotation = rotations[childIndex],
+            spinVelocity = (Random.value < reverseSpinChance ? -1f : 1f) * radians(Random.Range(spinSpeedA, spinSpeedB))
         };
     }
 
@@ -118,10 +124,9 @@ public class Fractal : MonoBehaviour
 
     void Update()
     {
-        float spinAngleDelta = 0.125f * PI * Time.deltaTime;
-        // spinAngleDelta *= 0;
+        float deltaTime = Time.deltaTime;
         FractalPart rootPart = parts[0][0];
-        rootPart.spinAngle += spinAngleDelta;
+        rootPart.spinAngle += rootPart.spinVelocity * deltaTime;
         rootPart.worldRotation = mul(transform.rotation,
             mul(rootPart.rotation, quaternion.RotateY(rootPart.spinAngle))
         );
@@ -138,7 +143,7 @@ public class Fractal : MonoBehaviour
             scale *= 0.5f;
             jobHandle = new UpdateFractalLevelJob
             {
-                spinAngleDelta = spinAngleDelta,
+                deltaTime = deltaTime,
                 scale = scale,
                 parents = parts[li - 1],
                 parts = parts[li],
@@ -191,14 +196,14 @@ struct UpdateFractalLevelJob : IJobFor
     [WriteOnly]
     public NativeArray<float3x4> matrices;
 
-    public float spinAngleDelta;
     public float scale;
+    public float deltaTime;
 
     public void Execute(int i)
     {
         FractalPart parent = parents[i / 5];
         FractalPart part = parts[i];
-        part.spinAngle += spinAngleDelta;
+        part.spinAngle += part.spinVelocity * deltaTime;
         float3 upAxis = mul(mul(parent.worldRotation, part.rotation), up());
         float3 sagAxis = cross(up(), upAxis);
         float sagMagnitude = length(sagAxis);
