@@ -1,4 +1,4 @@
-Shader "CLC_Shader/Jobs/Fractal Surface GPU" {
+Shader "CLC_Shader/Organic Variety/Fractal Surface GPU" {
 
 	Properties {
 		_BaseColor ("Base Color", Color) = (1.0, 1.0, 1.0, 1.0)
