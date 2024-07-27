@@ -13,7 +13,10 @@ public class NextSceneButton : MonoBehaviour
 
     void Start()
     {
+#if UNITY_EDITOR
+#else
         SceneManager.LoadSceneAsync(currentSceneIndex, LoadSceneMode.Additive);
+#endif
     }
 
     private void NextScene()
